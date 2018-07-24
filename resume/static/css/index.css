@@ -1,0 +1,13 @@
+body
+{
+    background-color: #f9f9f9;
+}
+
+
+.textarea_style
+{
+    width:400px;
+    height:150px;
+    resize: none;
+    overflow:auto;
+}

@@ -1,0 +1,54 @@
+
+{% load staticfiles %}
+
+<html>
+
+    <head> 
+        <title> Start Page </title> 
+        
+        <link rel="stylesheet" href=" {% static 'css/index.css' %} ">
+        
+        <script src="{% static 'js/index.js' %}" ></script>
+    
+    </head>
+
+    <body>
+    
+        <h3> Analytics Lab : Resume Analyser </h3>
+        
+        {% if parter == "part1" %}
+        
+            <form method="post" enctype="multipart/form-data" >
+                {% csrf_token %}
+                <input type="file" name="myfile">
+                <input type="text" name="parters" value="1" style="display:none">
+                <button type="submit"> Upload the file </button>
+
+            </form>
+        
+        {% elif parter == "part2" %}
+        
+            <h5>Job Description: </h5>
+
+            <form method="post">
+            {% csrf_token %}
+            <input type="text" name="parters" value="2" style="display:none">
+            <textarea class="textarea_style" placeholder="Enter the job description here" name="texter"></textarea><br><br> 
+            <button type="submit"> Search the Candidates </button>
+            </form>
+        
+        {% else %}
+        
+            <h5 style="text-decoration:underline"> List of candidates (suitable) : </h5>
+
+            {% for one in many %}
+
+                <li> <a href={{one.link}}> {{one.name}} </a> </li>
+
+            {% endfor %}
+
+        {% endif %}
+        
+    </body>
+    
+</html>
